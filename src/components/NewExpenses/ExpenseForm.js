@@ -1,45 +1,25 @@
 import "./ExpenseForm.css";
 import React, { useState } from "react";
 const ExpenseForm = (props) => {
-    const [title, setTitle] = useState('');
-    const [amount, setAmount] = useState('');
-    const [date, setDate] = useState('');
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState("");
+  const [date, setDate] = useState("");
 
-    const titleChangeHandler = (event) => setTitle(event.target.value);
-    const amountChangeHandler = (event) => setAmount(event.target.value);
-    const dateChangeHandler = (event) => setDate(event.target.value);
-//   const [userInput, setUserInput] = useState({
-//     title: "",
-//     amount: "",
-//     date: "",
-//   });
-//   const titleChangeHandler = (event) => {
-//     setUserInput((prevState) => {
-//         return {...prevState, title : event.target.value};
-//     });
-//   };
-//   const amountChangeHandler = (event) => {
-//     setUserInput((prevState) => {
-//         return {...prevState, amount : event.target.value};
-//     });
-//   };
-//   const dateChangeHandler = (event) => {
-//     setUserInput((prevState) => {
-//         return {...prevState, date : event.target.value};
-//     });
-//   };
+  const titleChangeHandler = (event) => setTitle(event.target.value);
+  const amountChangeHandler = (event) => setAmount(event.target.value);
+  const dateChangeHandler = (event) => setDate(event.target.value);
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    const expenseData ={
-        title : title,
-        amount : amount,
-        date : new Date(date)
+    const expenseData = {
+      title: title,
+      amount: amount,
+      date: new Date(date),
     };
     props.onSaveExpenseData(expenseData);
-    setTitle('');
-    setAmount('');
-    setDate(''); 
+    setTitle("");
+    setAmount("");
+    setDate("");
   };
 
   return (
@@ -59,9 +39,10 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="submit">
-          Add Expense
+        <button type="button" onClick={props.onCancel}>
+          Cancel
         </button>
+        <button type="submit">Add Expense</button>
       </div>
     </form>
   );
